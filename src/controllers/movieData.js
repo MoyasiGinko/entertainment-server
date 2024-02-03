@@ -1,6 +1,6 @@
 // movieData.js
 const uuid = require('uuid');
-const Movie = require('./models/Movie');
+const Movie = require('../models/Movie');
 
 const movieData = [
   {
