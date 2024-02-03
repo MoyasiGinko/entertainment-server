@@ -2,9 +2,6 @@
 const movies = require('../movieData');
 const Movie = require('../models/Movie');
 
-// Initialize movies array with top movies
-let movies = topMovies.map((movie) => new Movie(movie.title, movie.genre, movie.image, movie.rating, movie.releaseDate, movie.duration));
-
 // Controller functions
 
 // Get all movies
