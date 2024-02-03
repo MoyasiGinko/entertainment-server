@@ -2,10 +2,14 @@
 const uuid = require('uuid');
 
 class Movie {
-  constructor(title, genre) {
+  constructor(title, genre, image, rating, releaseDate, duration) {
     this.id = uuid.v4();
     this.title = title;
     this.genre = genre;
+    this.image = image;
+    this.rating = rating;
+    this.releaseDate = releaseDate;
+    this.duration = duration;
   }
 }
 
