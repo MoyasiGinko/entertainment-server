@@ -4,7 +4,6 @@ const Movie = require('./models/Movie');
 
 const movieData = [
   {
-    id: uuid.v4(),
     title: 'The Shawshank Redemption',
     genre: 'Drama',
     image: 'https://www.gstatic.com/webp/gallery/1.jpg',
@@ -13,7 +12,6 @@ const movieData = [
     duration: 142,
   },
   {
-    id: uuid.v4(),
     title: 'The Shawshank Redemption',
     genre: 'Drama',
     image: 'https://www.gstatic.com/webp/gallery/1.jpg',
@@ -22,7 +20,6 @@ const movieData = [
     duration: 142,
   },
   {
-    id: uuid.v4(),
     title: 'The Godfather',
     genre: 'Crime',
     image: 'https://www.gstatic.com/webp/gallery/2.jpg',
@@ -31,7 +28,6 @@ const movieData = [
     duration: 175,
   },
   {
-    id: uuid.v4(),
     title: 'The Dark Knight',
     genre: 'Action',
     image: 'https://www.gstatic.com/webp/gallery/3.jpg',
@@ -40,7 +36,6 @@ const movieData = [
     duration: 152,
   },
   {
-    id: uuid.v4(),
     title: 'Pulp Fiction',
     genre: 'Crime',
     image: 'https://www.gstatic.com/webp/gallery/4.jpg',
@@ -49,7 +44,6 @@ const movieData = [
     duration: 154,
   },
   {
-    id: uuid.v4(),
     title: 'The Lord of the Rings: The Return of the King',
     genre: 'Adventure',
     image: 'https://www.gstatic.com/webp/gallery/5.jpg',
@@ -58,7 +52,6 @@ const movieData = [
     duration: 201,
   },
   {
-    id: uuid.v4(),
     title: 'Schindler\'s List',
     genre: 'Biography',
     image: 'https://www.gstatic.com/webp/gallery/6.jpg',
@@ -67,7 +60,6 @@ const movieData = [
     duration: 195,
   },
   {
-    id: uuid.v4(),
     title: 'Fight Club',
     genre: 'Drama',
     image: 'https://www.gstatic.com/webp/gallery/7.jpg',
@@ -76,7 +68,6 @@ const movieData = [
     duration: 139,
   },
   {
-    id: uuid.v4(),
     title: 'Forrest Gump',
     genre: 'Drama',
     image: 'https://www.gstatic.com/webp/gallery/8.jpg',
@@ -85,7 +76,6 @@ const movieData = [
     duration: 142,
   },
   {
-    id: uuid.v4(),
     title: 'Inception',
     genre: 'Action',
     image: 'https://www.gstatic.com/webp/gallery/9.jpg',
@@ -94,7 +84,6 @@ const movieData = [
     duration: 148,
   },
   {
-    id: uuid.v4(),
     title: 'The Matrix',
     genre: 'Action',
     image: 'https://www.gstatic.com/webp/gallery/10.jpg',
@@ -103,7 +92,6 @@ const movieData = [
     duration: 136,
   },
   {
-    id: uuid.v4(),
     title: 'The Silence of the Lambs',
     genre: 'Crime',
     image: 'https://www.gstatic.com/webp/gallery/11.jpg',
@@ -112,7 +100,6 @@ const movieData = [
     duration: 118,
   },
   {
-    id: uuid.v4(),
     title: 'The Godfather: Part II',
     genre: 'Crime',
     image: 'https://www.gstatic.com/webp/gallery/12.jpg',
@@ -121,7 +108,6 @@ const movieData = [
     duration: 202,
   },
   {
-    id: uuid.v4(),
     title: 'The Lord of the Rings: The Fellowship of the Ring',
     genre: 'Adventure',
     image: 'https://www.gstatic.com/webp/gallery/13.jpg',
@@ -130,7 +116,6 @@ const movieData = [
     duration: 178,
   },
   {
-    id: uuid.v4(),
     title: 'The Dark Knight Rises',
     genre: 'Action',
     image: 'https://www.gstatic.com/webp/gallery/14.jpg',
@@ -139,7 +124,6 @@ const movieData = [
     duration: 164,
   },
   {
-    id: uuid.v4(),
     title: 'The Shawshank Redemption',
     genre: 'Drama',
     image: 'https://www.gstatic.com/webp/gallery/1.jpg',
@@ -148,7 +132,6 @@ const movieData = [
     duration: 142,
   },
   {
-    id: uuid.v4(),
     title: 'The Empire Strikes Back',
     genre: 'Action',
     image: 'https://www.gstatic.com/webp/gallery/2.jpg',
@@ -157,7 +140,6 @@ const movieData = [
     duration: 124,
   },
   {
-    id: uuid.v4(),
     title: 'Titanic',
     genre: 'Drama',
     image: 'https://www.gstatic.com/webp/gallery/3.jpg',
@@ -166,7 +148,6 @@ const movieData = [
     duration: 195,
   },
   {
-    id: uuid.v4(),
     title: 'Avatar',
     genre: 'Action',
     image: 'https://www.gstatic.com/webp/gallery/4.jpg',
@@ -175,7 +156,6 @@ const movieData = [
     duration: 162,
   },
   {
-    id: uuid.v4(),
     title: 'Jurassic Park',
     genre: 'Adventure',
     image: 'https://www.gstatic.com/webp/gallery/5.jpg',
