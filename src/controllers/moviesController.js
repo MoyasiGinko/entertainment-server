@@ -1,5 +1,5 @@
 // src/controllers/moviesController.js
-const movies = require('../movieData');
+const movies = require('./movieData');
 const Movie = require('../models/Movie');
 
 // Controller functions
