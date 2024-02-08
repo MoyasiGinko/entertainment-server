@@ -6,6 +6,9 @@ const moviesController = require('../controllers/moviesController');
 // Get all movies
 router.get('/', moviesController.getAllMovies);
 
+// Get a specific movie by ID
+router.get('/:id', moviesController.getMovieById);
+
 // Create a new movie
 router.post('/', moviesController.createMovie);
 

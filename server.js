@@ -1,21 +1,18 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-require('dotenv').config();
+const express = require("express");
+const bodyParser = require("body-parser");
+const cors = require("cors");
+require("dotenv").config();
 
-const app = express();  // Move this line to the top
-
-app.use(cors({ origin: (origin, callback) => callback(null, true) }));
-app.use(bodyParser.json());
-
-const PORT = process.env.PORT || 3001;
+const app = express();
 
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
 
+const PORT = process.env.PORT || 3001;
+
 // Routes
-app.use('/movies', require('./src/routes/movies'));
+app.use("/movies", require("./src/routes/movies"));
 
 // Start server
 app.listen(PORT, () => {
