@@ -1,3 +1,4 @@
+const { incrementGlobalAvIdCounter } = require("../utils/globals");
 const Movie = require("../models/Movie");
 
 // Controller functions
@@ -31,6 +32,7 @@ async function getMovieById(req, res) {
 async function createMovie(req, res) {
   const { title, genre, image, rating, releaseDate, duration } = req.body;
   const newMovie = new Movie({
+    avId: incrementGlobalAvIdCounter(),
     title,
     genre,
     image,
@@ -40,7 +42,7 @@ async function createMovie(req, res) {
   });
   try {
     const savedMovie = await newMovie.save();
-    res.json(savedMovie.toJSON()); // Ensure .toJSON() is called
+    res.json(savedMovie.toJSON());
   } catch (error) {
     res.status(500).json({ message: "Internal Server Error" });
   }

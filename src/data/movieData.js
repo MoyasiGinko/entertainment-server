@@ -1,7 +1,9 @@
 // movieData.js
 // const uuid = require('uuid');
-// const mongoose = require("mongoose"); // Add this line
+const { incrementGlobalAvIdCounter } = require("../utils/globals");
 const Movie = require("../models/Movie");
+
+let globalAvIdCounter = 0;
 
 const movieData = [
   {
@@ -169,7 +171,11 @@ const movieData = [
 const seedDatabase = async () => {
   try {
     await Movie.deleteMany({});
-    await Movie.insertMany(movieData);
+    const moviesWithCustomId = movieData.map((movie) => ({
+      ...movie,
+      avId: incrementGlobalAvIdCounter(),
+    }));
+    await Movie.insertMany(moviesWithCustomId);
     console.log("Database seeded successfully");
   } catch (error) {
     console.error("Error seeding database:", error);
