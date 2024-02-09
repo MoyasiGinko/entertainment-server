@@ -1,66 +1,91 @@
-// src/controllers/moviesController.js
-const movies = require("../data/movieData");
 const Movie = require("../models/Movie");
 
 // Controller functions
 
 // Get all movies
-function getAllMovies(req, res) {
-  res.json(movies);
+async function getAllMovies(req, res) {
+  try {
+    const movies = await Movie.find();
+    res.json(movies);
+  } catch (error) {
+    res.status(500).json({ message: "Internal Server Error" });
+  }
 }
 
 // Get a specific movie by ID
-function getMovieById(req, res) {
+async function getMovieById(req, res) {
   const { id } = req.params;
-  const numericId = parseInt(id, 10);
-  const movie = movies.find((m) => m.id === numericId);
-
-  if (movie) {
-    res.json(movie);
-  } else {
-    res.status(404).json({ message: "Movie not found" });
+  try {
+    const movie = await Movie.findById(id);
+    if (movie) {
+      res.json(movie);
+    } else {
+      res.status(404).json({ message: "Movie not found" });
+    }
+  } catch (error) {
+    res.status(500).json({ message: "Internal Server Error" });
   }
 }
 
 // Create a new movie
-function createMovie(req, res) {
+async function createMovie(req, res) {
   const { title, genre, image, rating, releaseDate, duration } = req.body;
-  const newMovie = new Movie(
+  const newMovie = new Movie({
     title,
     genre,
     image,
     rating,
     releaseDate,
-    duration
-  );
-  movies.push(newMovie);
-  res.json(newMovie);
+    duration,
+  });
+  try {
+    const savedMovie = await newMovie.save();
+    res.json(savedMovie.toJSON()); // Ensure .toJSON() is called
+  } catch (error) {
+    res.status(500).json({ message: "Internal Server Error" });
+  }
 }
 
 // Update a movie
-function updateMovie(req, res) {
+async function updateMovie(req, res) {
   const { id } = req.params;
   const { title, genre, image, rating, releaseDate, duration } = req.body;
-  const movie = movies.find((m) => m.id === parseInt(id)); // Convert id to number
-  if (movie) {
-    movie.title = title;
-    movie.genre = genre;
-    movie.image = image;
-    movie.rating = rating;
-    movie.releaseDate = releaseDate;
-    movie.duration = duration;
-    res.json(movie);
-  } else {
-    res.status(404).json({ message: "Movie not found" });
+  try {
+    const updatedMovie = await Movie.findByIdAndUpdate(
+      id,
+      {
+        title,
+        genre,
+        image,
+        rating,
+        releaseDate,
+        duration,
+      },
+      { new: true }
+    );
+    if (updatedMovie) {
+      res.json(updatedMovie);
+    } else {
+      res.status(404).json({ message: "Movie not found" });
+    }
+  } catch (error) {
+    res.status(500).json({ message: "Internal Server Error" });
   }
 }
 
 // Delete a movie
-function deleteMovie(req, res) {
+async function deleteMovie(req, res) {
   const { id } = req.params;
-  const numericId = parseInt(id, 10);
-  movies = movies.filter((m) => m.id !== numericId);
-  res.json({ message: "Movie deleted successfully" });
+  try {
+    const deletedMovie = await Movie.findByIdAndDelete(id);
+    if (deletedMovie) {
+      res.json({ message: "Movie deleted successfully" });
+    } else {
+      res.status(404).json({ message: "Movie not found" });
+    }
+  } catch (error) {
+    res.status(500).json({ message: "Internal Server Error" });
+  }
 }
 
 module.exports = {

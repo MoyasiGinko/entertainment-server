@@ -1,20 +1,14 @@
-// models/Movie.js
-class Movie {
-  constructor(title, genre, image, rating, releaseDate, duration) {
-    this.id = Movie.generateNextId(); // Assign the next sequential numerical ID
-    this.title = title;
-    this.genre = genre;
-    this.image = image;
-    this.rating = rating;
-    this.releaseDate = releaseDate;
-    this.duration = duration;
-  }
+const mongoose = require("mongoose");
 
-  static nextId = 1; // Initial value for the next ID
+const movieSchema = new mongoose.Schema({
+  title: String,
+  genre: String,
+  image: String,
+  rating: Number,
+  releaseDate: Date,
+  duration: Number,
+});
 
-  static generateNextId() {
-    return Movie.nextId++;
-  }
-}
+const Movie = mongoose.model("Movie", movieSchema);
 
 module.exports = Movie;
