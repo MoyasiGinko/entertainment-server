@@ -3,8 +3,6 @@
 const { incrementGlobalAvIdCounter } = require("../utils/globals");
 const Movie = require("../models/Movie");
 
-let globalAvIdCounter = 0;
-
 const movieData = [
   {
     title: "The Shawshank Redemption",
@@ -168,18 +166,20 @@ const movieData = [
   },
 ];
 
-const seedDatabase = async () => {
+const seedMovieDatabase = async () => {
   try {
     await Movie.deleteMany({});
-    const moviesWithCustomId = movieData.map((movie) => ({
-      ...movie,
-      avId: incrementGlobalAvIdCounter(),
-    }));
-    await Movie.insertMany(moviesWithCustomId);
-    console.log("Database seeded successfully");
+    for (const movie of movieData) {
+      const newMovie = new Movie({
+        ...movie,
+        avId: incrementGlobalAvIdCounter(),
+      });
+      await newMovie.save();
+    }
+    console.log("Database seeded successfully with movies");
   } catch (error) {
-    console.error("Error seeding database:", error);
+    console.error("Error seeding movie database:", error);
   }
 };
 
-module.exports = seedDatabase;
+module.exports = seedMovieDatabase;

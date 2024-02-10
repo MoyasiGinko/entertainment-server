@@ -2,7 +2,9 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const seedDatabase = require("./src/data/movieData"); // Import the seed function
+const seedMovieDatabase = require("./src/data/movieData"); // Import the seed function
+const seedAnimeDatabase = require("./src/data/animeData");
+const seedGameDatabase = require("./src/data/gameData");
 
 require("dotenv").config();
 
@@ -26,11 +28,13 @@ db.once("open", async () => {
   console.log("Connected to MongoDB");
 
   // Seed the database with movie data
-  await seedDatabase();
+  await seedMovieDatabase(), seedAnimeDatabase(), seedGameDatabase();
 });
 
 // Routes
 app.use("/movies", require("./src/routes/movies"));
+app.use("/animes", require("./src/routes/animes"));
+app.use("/games", require("./src/routes/games"));
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);

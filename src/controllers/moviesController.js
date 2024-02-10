@@ -4,17 +4,17 @@ const Movie = require("../models/Movie");
 // Controller functions
 
 // Get all movies
-async function getAllMovies(req, res) {
+const getAllMovies = async (req, res) => {
   try {
     const movies = await Movie.find();
     res.json(movies);
   } catch (error) {
     res.status(500).json({ message: "Internal Server Error" });
   }
-}
+};
 
 // Get a specific movie by ID
-async function getMovieById(req, res) {
+const getMovieById = async (req, res) => {
   const { id } = req.params;
   try {
     const movie = await Movie.findById(id);
@@ -26,10 +26,10 @@ async function getMovieById(req, res) {
   } catch (error) {
     res.status(500).json({ message: "Internal Server Error" });
   }
-}
+};
 
 // Create a new movie
-async function createMovie(req, res) {
+const createMovie = async (req, res) => {
   const { title, genre, image, rating, releaseDate, duration } = req.body;
   const newMovie = new Movie({
     avId: incrementGlobalAvIdCounter(),
@@ -46,10 +46,10 @@ async function createMovie(req, res) {
   } catch (error) {
     res.status(500).json({ message: "Internal Server Error" });
   }
-}
+};
 
 // Update a movie
-async function updateMovie(req, res) {
+const updateMovie = async (req, res) => {
   const { id } = req.params;
   const { title, genre, image, rating, releaseDate, duration } = req.body;
   try {
@@ -73,10 +73,10 @@ async function updateMovie(req, res) {
   } catch (error) {
     res.status(500).json({ message: "Internal Server Error" });
   }
-}
+};
 
 // Delete a movie
-async function deleteMovie(req, res) {
+const deleteMovie = async (req, res) => {
   const { id } = req.params;
   try {
     const deletedMovie = await Movie.findByIdAndDelete(id);
@@ -88,7 +88,7 @@ async function deleteMovie(req, res) {
   } catch (error) {
     res.status(500).json({ message: "Internal Server Error" });
   }
-}
+};
 
 module.exports = {
   getAllMovies,
