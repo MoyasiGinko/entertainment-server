@@ -1,23 +1,10 @@
 {
   "version": 2,
-  "builds": [
-    { "src": "/controllers/**/*.js", "use": "@vercel/node" },
-    { "src": "/models/**/*.js", "use": "@vercel/node" },
-    { "src": "/routes/**/*.js", "use": "@vercel/node" }
-  ],
+  "builds": [{ "src": "./server.js", "use": "@vercel/node" }],
   "routes": [
-    { "handle": "filesystem" },
     {
-      "src": "/movies",
-      "dest": "/routes/movies.js"
-    },
-    {
-      "src": "/animes",
-      "dest": "/routes/animes.js"
-    },
-    {
-      "src": "/games",
-      "dest": "/routes/games.js"
+      "src": "./routes/(.*)",
+      "dest": "/"
     }
   ]
 }
