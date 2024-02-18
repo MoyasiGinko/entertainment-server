@@ -3,8 +3,16 @@
   "builds": [{ "src": "/server.js", "use": "@vercel/node" }],
   "routes": [
     {
-      "src": "/routes/(.*)",
-      "dest": "/$1"
+      "src": "/movies/(.*)",
+      "dest": "/movies/$1"
+    },
+    {
+      "src": "/animes/(.*)",
+      "dest": "/animes/$1"
+    },
+    {
+      "src": "/games/(.*)",
+      "dest": "/games/$1"
     }
   ]
 }
